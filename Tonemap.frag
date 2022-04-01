@@ -30,7 +30,7 @@
 */
 void shader_tonemap() {
     // Defog
-    g_Color.rgb = clamp(g_Color.rgb - TONAMEP_DEFOG * TONEMAP_FOGCOLOR * 2.55, 0.0, 1.0);
+    g_Color.rgb = clamp(g_Color.rgb - TONEMAP_DEFOG * TONEMAP_FOGCOLOR * 2.55, 0.0, 1.0);
     // Exposure
     g_Color.rgb *= pow(2.0, TONEMAP_EXPOSURE);
     // Gamma

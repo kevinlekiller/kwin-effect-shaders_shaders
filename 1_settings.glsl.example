@@ -584,7 +584,7 @@ uniform vec3 TC2_COLORSTRENGTH = vec3(0.2, 0.2, 0.2);
 // How much of the color tint to remove
 //   Range: 0.0 to 1.0
 // Default: 0.0
-#define TONAMEP_DEFOG 0.0
+#define TONEMAP_DEFOG 0.0
 
 // Which color tint to remove
 //   Range: 0.0 to 1.0
