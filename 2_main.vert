@@ -23,7 +23,7 @@ out vec2 g_oTexcoord;
 uniform sampler2D g_Texture;
 uniform mat4 modelViewProjectionMatrix;
 uniform float g_Random;
-vec2 g_TextureSize;
+uniform vec2 g_TextureSize;
 vec4 g_SourceSize;
 
 #if ADVANCED_CARTOON_ENABLED == 1
@@ -33,7 +33,6 @@ void shader_advanced_cartoon();
 void main() {
     g_oTexcoord = g_iTexcoord.st;
     gl_Position = modelViewProjectionMatrix * g_Position;
-    g_TextureSize = textureSize(g_Texture, 0);
     g_SourceSize = vec4(g_TextureSize, 1.0 / g_TextureSize);
 
     for (int shader = 0; shader <= SHADERS; shader++) {

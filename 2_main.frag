@@ -31,7 +31,7 @@ out vec4 g_FragColor;
 // Initially set to the current pixel color, at the end of the program g_FragColor is set to this.
 vec4 g_Color;
 vec4 g_SourceSize;
-vec2 g_TextureSize;
+uniform vec2 g_TextureSize;
 
 #if ADAPTIVE_SHARPEN_ENABLED == 1
 void shader_adaptive_sharpen();
@@ -96,7 +96,6 @@ void shader_vibrance();
 
 void main() {
     g_Color = texture(g_Texture, g_oTexcoord).rgba;
-    g_TextureSize = textureSize(g_Texture, 0);
     g_SourceSize = vec4(g_TextureSize, 1.0 / g_TextureSize);
 
     for (int shader = 0; shader <= SHADERS; shader++) {
