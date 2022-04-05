@@ -12,14 +12,14 @@
 #define SHADER_LIFT_GAMMA_GAIN      9
 #define SHADER_LEVELS              10
 #define SHADER_ADVANCED_CARTOON    11
-#define SHADER_GRAYSCALE           12
-#define SHADER_FXAA3               13
-#define SHADER_AMD_CAS             14
-#define SHADER_NVIDIA_DLS          15
-#define SHADER_FAST_SHARPEN        16
-#define SHADER_ADAPTIVE_SHARPEN    17
-#define SHADER_FAST_GAUSS_BLURV    18
-#define SHADER_FILM_NOISE          19
+#define SHADER_FXAA3               12
+#define SHADER_AMD_CAS             13
+#define SHADER_NVIDIA_DLS          14
+#define SHADER_FAST_SHARPEN        15
+#define SHADER_ADAPTIVE_SHARPEN    16
+#define SHADER_FAST_GAUSS_BLURV    17
+#define SHADER_FILM_NOISE          18
+#define SHADER_GRAYSCALE           19
 #define SHADERS                    20
 //----------------------------------------------------------------
 //----------------------------------------------------------------
@@ -47,7 +47,6 @@ const int SHADER_ORDER[SHADERS+1] = int[] ( // Don't change this line.
     SHADER_LIFT_GAMMA_GAIN,
     SHADER_LEVELS,
     SHADER_ADVANCED_CARTOON,
-    SHADER_GRAYSCALE,
     SHADER_FXAA3,
     SHADER_AMD_CAS,
     SHADER_NVIDIA_DLS,
@@ -55,6 +54,7 @@ const int SHADER_ORDER[SHADERS+1] = int[] ( // Don't change this line.
     SHADER_ADAPTIVE_SHARPEN,
     SHADER_FAST_GAUSS_BLURV,
     SHADER_FILM_NOISE,
+    SHADER_GRAYSCALE,
 
 SHADERS); // Don't change this line.
 
