@@ -48,6 +48,9 @@ void shader_advanced_cartoon();
 #if CAS_ENABLED == 1
 void shader_amd_cas();
 #endif
+#if CARTOON_ENABLED == 1
+void shader_cartoon();
+#endif
 #if CHROMATICABERRATION_ENABLED == 1
 void shader_chromatic_aberration();
 #endif
@@ -123,6 +126,11 @@ void main() {
             #if CAS_ENABLED == 1
             case SHADER_AMD_CAS:
                 shader_amd_cas();
+                break;
+            #endif
+            #if CARTOON_ENABLED == 1
+            case SHADER_CARTOON:
+                shader_cartoon();
                 break;
             #endif
             #if CHROMATICABERRATION_ENABLED == 1

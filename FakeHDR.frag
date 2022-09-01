@@ -31,9 +31,8 @@
     SOFTWARE.
 */
 
-float FHDR_DIST = FHDR_RADIUS2 - FHDR_RADIUS1;
-
 void shader_fake_hdr() {
+    float FHDR_DIST = FHDR_RADIUS2 - FHDR_RADIUS1;
     vec3 bloom_sum1 = texture(g_Texture, g_oTexcoord + vec2(1.5, -1.5) * FHDR_RADIUS1 * g_PixelSize).rgb;
     bloom_sum1 += texture(g_Texture, g_oTexcoord + vec2(-1.5, -1.5) * FHDR_RADIUS1 * g_PixelSize).rgb;
     bloom_sum1 += texture(g_Texture, g_oTexcoord + vec2( 1.5,  1.5) * FHDR_RADIUS1 * g_PixelSize).rgb;

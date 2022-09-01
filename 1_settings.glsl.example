@@ -12,16 +12,17 @@
 #define SHADER_LIFT_GAMMA_GAIN       9
 #define SHADER_LEVELS               10
 #define SHADER_CHROMATIC_ABERRATION 11
-#define SHADER_ADVANCED_CARTOON     12
-#define SHADER_FXAA3                13
-#define SHADER_AMD_CAS              14
-#define SHADER_NVIDIA_DLS           15
-#define SHADER_FAST_SHARPEN         16
-#define SHADER_ADAPTIVE_SHARPEN     17
-#define SHADER_FAST_GAUSS_BLURV     18
-#define SHADER_FILM_NOISE           19
-#define SHADER_GRAYSCALE            20
-#define SHADERS                     21
+#define SHADER_CARTOON              12
+#define SHADER_ADVANCED_CARTOON     13
+#define SHADER_FXAA3                14
+#define SHADER_AMD_CAS              15
+#define SHADER_NVIDIA_DLS           16
+#define SHADER_FAST_SHARPEN         17
+#define SHADER_ADAPTIVE_SHARPEN     18
+#define SHADER_FAST_GAUSS_BLURV     19
+#define SHADER_FILM_NOISE           20
+#define SHADER_GRAYSCALE            21
+#define SHADERS                     22
 //----------------------------------------------------------------
 //----------------------------------------------------------------
 //------------------ Start of user configuration -----------------
@@ -48,6 +49,7 @@ const int SHADER_ORDER[SHADERS+1] = int[] ( // Don't change this line.
     SHADER_LIFT_GAMMA_GAIN,
     SHADER_LEVELS,
     SHADER_CHROMATIC_ABERRATION,
+    SHADER_CARTOON,
     SHADER_ADVANCED_CARTOON,
     SHADER_FXAA3,
     SHADER_AMD_CAS,
@@ -136,6 +138,28 @@ SHADERS); // Don't change this line.
 //   Range: -1.0 to 1.0
 // Default: 0.4
 #define CAS_SHARPNESS 0.4
+
+#endif
+//----------------------------------------------------------------
+//--------------- Cartoon configuration section -----------------
+//----------------------------------------------------------------
+// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Cartoon.fx
+
+// Set to 1 to enable.
+#define CARTOON_ENABLED 0
+#if CARTOON_ENABLED == 1 // Don't change this line.
+
+// Amount of effect you want.
+//   Range: 0.1 to 10
+// Default: 1.5
+#define CARTOON_POWER 1.5
+
+// Raise this to filter out fainter edges.
+// You might need to increase the power to compensate.
+// Whole numbers are faster.
+//   Range: 0.1 to 6.0
+// Default: 1.5
+#define CARTOON_EDGE_SLOPE 1.5
 
 #endif
 //----------------------------------------------------------------
