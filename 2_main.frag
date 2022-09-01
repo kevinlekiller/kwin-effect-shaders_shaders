@@ -17,13 +17,17 @@
  *  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  */
 
+// https://github.com/libretro/glsl-shaders
+// https://github.com/crosire/reshade-shaders/blob/slim/REFERENCE.md
 // AKA Texture or Source in libretro
+// AKA ReShade::BackBuffer
 uniform sampler2D g_Texture;
 // Random number generated with drand48() casted to float.
 // Only pixels which have changed since the last draw are processed,
 // which means if you're doing noise for example, the noise will only apply to the pixels that have changed.
 uniform float g_Random;
 // AKA TEX0 or vTexCoord in libretro
+// AKA TexCoord in Reshade
 // The coordinates of the current texture.
 in vec2 g_oTexcoord;
 // This is the final color of the pixel.
@@ -32,6 +36,8 @@ out vec4 g_FragColor;
 vec4 g_Color;
 vec4 g_SourceSize;
 uniform vec2 g_TextureSize;
+// AKA BUFFER_PIXEL_SIZE in Reshade
+vec2 g_PixelSize;
 
 #if ADAPTIVE_SHARPEN_ENABLED == 1
 void shader_adaptive_sharpen();
@@ -41,6 +47,9 @@ void shader_advanced_cartoon();
 #endif
 #if CAS_ENABLED == 1
 void shader_amd_cas();
+#endif
+#if CHROMATICABERRATION_ENABLED == 1
+void shader_chromatic_aberration();
 #endif
 #if DEBAND_ENABLED == 1
 void shader_deband();
@@ -97,6 +106,7 @@ void shader_vibrance();
 void main() {
     g_Color = texture(g_Texture, g_oTexcoord).rgba;
     g_SourceSize = vec4(g_TextureSize, 1.0 / g_TextureSize);
+    g_PixelSize = vec2(1.0 / g_TextureSize);
 
     for (int shader = 0; shader <= SHADERS; shader++) {
         switch(SHADER_ORDER[shader]) {
@@ -113,6 +123,11 @@ void main() {
             #if CAS_ENABLED == 1
             case SHADER_AMD_CAS:
                 shader_amd_cas();
+                break;
+            #endif
+            #if CHROMATICABERRATION_ENABLED == 1
+            case SHADER_CHROMATIC_ABERRATION:
+                shader_chromatic_aberration();
                 break;
             #endif
             #if DEBAND_ENABLED == 1
