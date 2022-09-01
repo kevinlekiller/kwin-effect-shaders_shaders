@@ -80,9 +80,9 @@ SHADERS); // Don't change this line.
 //----------------------------------------------------------------
 //------------ Adaptive Sharpen configuration section ------------
 //----------------------------------------------------------------
-// https://gist.github.com/igv/8a77e4eb8276753b54bb94c1c50c317e
-
-// NOTE: This shader can be slow, consider using CAS, DLS or Fast Sharpen if you experience framedrops.
+// Description: Provides a very good quality of sharpening with high computational cost.
+// License: BSD 2-Clause
+// Source: https://gist.github.com/igv/8a77e4eb8276753b54bb94c1c50c317e
 
 // Set to 1 to enable.
 #define ADAPTIVE_SHARPEN_ENABLED 0
@@ -99,7 +99,9 @@ SHADERS); // Don't change this line.
 //----------------------------------------------------------------
 //------------ Advanced Cartoon configuration section ------------
 //----------------------------------------------------------------
-// https://github.com/libretro/glsl-shaders/blob/master/cel/shaders/advcartoon.glsl
+// Description: This shader gives a type of posterization effect to the image.
+// License: GPL
+// Source: https://github.com/libretro/glsl-shaders/blob/master/cel/shaders/advcartoon.glsl
 
 // Set to 1 to enable.
 #define ADVANCED_CARTOON_ENABLED 0
@@ -124,7 +126,9 @@ SHADERS); // Don't change this line.
 //----------------------------------------------------------------
 //----- AMD Contrast adaptive sharpen configuration section ------
 //----------------------------------------------------------------
-// https://github.com/DadSchoorse/vkBasalt/blob/master/src/shader/cas.frag.glsl
+// Description: Provides a good quality sharpening effect with low computational requirements.
+// License: MIT
+// Source: https://github.com/DadSchoorse/vkBasalt/blob/master/src/shader/cas.frag.glsl
 
 // Set to 1 to enable.
 #define CAS_ENABLED 0
@@ -143,7 +147,9 @@ SHADERS); // Don't change this line.
 //----------------------------------------------------------------
 //--------------- Cartoon configuration section -----------------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Cartoon.fx
+// Description: Darkens edges to give a cartonish effect.
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Cartoon.fx
 
 // Set to 1 to enable.
 #define CARTOON_ENABLED 0
@@ -165,9 +171,10 @@ SHADERS); // Don't change this line.
 //----------------------------------------------------------------
 //--------- Chromatic Aberration configuration section -----------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/ChromaticAberration.fx
-
-// Distorts the image by shifting each color component, which creates color artifacts similar to those in a very cheap lens or a cheap sensor.
+// Description: Distorts the image by shifting each color component,
+// which creates color artifacts similar to those in a very cheap lens or a cheap sensor.
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/ChromaticAberration.fx
 
 // Set to 1 to enable.
 #define CHROMATICABERRATION_ENABLED 0
@@ -188,9 +195,9 @@ uniform vec2 CHROMATICABERRATION_SHIFT = vec2(2.5, -0.5);
 //----------------------------------------------------------------
 //---------------- Deband configuration section ------------------
 //----------------------------------------------------------------
-// https://github.com/haasn/gentoo-conf/blob/xor/home/nand/.mpv/shaders/deband.glsl
-
-// Reduces color banding - see https://en.wikipedia.org/wiki/Colour_banding
+// Description: Reduces color banding - see https://en.wikipedia.org/wiki/Colour_banding.
+// License GPL v2
+// Source: https://github.com/haasn/gentoo-conf/blob/xor/home/nand/.mpv/shaders/deband.glsl
 
 // Set to 1 to enable.
 #define DEBAND_ENABLED 0
@@ -233,7 +240,9 @@ uniform vec2 CHROMATICABERRATION_SHIFT = vec2(2.5, -0.5);
 //----------------------------------------------------------------
 //------------------ DPX configuration section -------------------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/DPX.fx
+// Description: An effect to replicate the look of Kodak Cineon/DPX.
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/DPX.fx
 
 // Set to 1 to enable.
 #define DPX_ENABLED 0
@@ -268,9 +277,9 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 //----------------------------------------------------------------
 //---------------- Fake HDR configuration section ----------------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/FakeHDR.fx
-
-// Not actual HDR - It just tries to mimic an HDR look (relatively high performance cost)
+// Description: Not actual HDR - It just tries to mimic an HDR look (relatively high performance cost)
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/FakeHDR.fx
 
 // Set to 1 to enable.
 #define FAKEHDR_ENABLED 0
@@ -297,7 +306,9 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 //----------------------------------------------------------------
 //----------- Fast Gaussian Blur 5 configuration section ---------
 //----------------------------------------------------------------
-// https://github.com/Jam3/glsl-fast-gaussian-blur
+// Description: Simple blur effect with low computational cost.
+// License: MIT
+// Source: https://github.com/Jam3/glsl-fast-gaussian-blur
 
 #define FAST_GAUSS_BLURV_ENABLED 0
 #if FAST_GAUSS_BLURV_ENABLED == 1 // Don't change this line.
@@ -316,9 +327,9 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 //----------------------------------------------------------------
 //------------- Fast Sharpen configuration section ---------------
 //----------------------------------------------------------------
-// https://github.com/libretro/glsl-shaders/blob/master/sharpen/shaders/fast-sharpen.glsl
-
-// Doesn't produce as nice results as adaptive-sharpen but much less intensive to process.
+// Description:  Provides acceptable quality of sharpening with very low computational cost.
+// License: GPL v2
+// Source: https://github.com/libretro/glsl-shaders/blob/master/sharpen/shaders/fast-sharpen.glsl
 
 // Set to 1 to enable.
 #define FAST_SHARPEN_ENABLED 0
@@ -343,15 +354,16 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 //----------------------------------------------------------------
 //-------------- Film Noise configuration section ----------------
 //----------------------------------------------------------------
-// https://github.com/libretro/glsl-shaders/blob/master/film/shaders/film_noise.glsl
-
-// Adds film noise to the output. Works better on non static images.
+// Description: Adds film noise to the output. Works better on non static images.
+// License: Public Domain
+// Source: https://github.com/libretro/glsl-shaders/blob/master/film/shaders/film_noise.glsl
 
 // Set to 1 to enable.
 #define FILM_NOISE_ENABLED 0
 #if FILM_NOISE_ENABLED == 1 // Don't change this line.
 
 // The amount of noise.
+// The effect is not very noticeable at the default strength, at around 6.0 it starts becomimg noticeable.
 //   Range: > 0.0
 // Default: 2.0
 #define FILM_NOISE_STRENGTH 2.0
@@ -360,6 +372,9 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 //----------------------------------------------------------------
 //---------------- FXAA3 configuration section -------------------
 //----------------------------------------------------------------
+// Description: Anti-aliasing shader, with very high computational cost, blurs the image significantly.
+// Personal recommendation is to use alternatives if possible, for example: https://docs.mesa3d.org/gallium/postprocess.html#current-filters
+// License: Custom (Nvidia License)
 // https://gist.github.com/kosua20/0c506b81b3812ac900048059d2383126
 
 // Set to 1 to enable.
@@ -414,9 +429,9 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 //----------------------------------------------------------------
 //---------------- Grayscale configuration section ---------------
 //----------------------------------------------------------------
-// https://wikiless.org/wiki/Grayscale?lang=en#Luma_coding_in_video_systems
-
-// Reduces colors to grayscale.
+// Description: Reduces colors to grayscale.
+// License: GPL v2
+// Source: https://wikiless.org/wiki/Grayscale?lang=en#Luma_coding_in_video_systems
 
 // Set to 1 to enable.
 #define GRAYSCALE_ENABLED 0
@@ -434,14 +449,14 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 //----------------------------------------------------------------
 //---------------- Levels configuration section ------------------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Levels.fx
-
-// Allows you to set a new black and a white level.
+// Description:  you to set a new black and a white level.
 // This increases contrast, but clips any colors outside the new range to either black or white
 // and so some details in the shadows or highlights can be lost.
 // The shader is very useful for expanding the 16-235 TV range to 0-255 PC range.
 // You might need it if you're playing a game meant to display on a TV with an emulator that does not do this.
 // But it's also a quick and easy way to uniformly increase the contrast of an image.
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Levels.fx
 
 // Set to 1 to enable.
 #define LEVELS_ENABLED 0
@@ -461,7 +476,9 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 //----------------------------------------------------------------
 //------------ Lift Gamma Gain configuration section -------------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/LiftGammaGain.fx
+// Description: Fine grained Gamma RGB control.
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/LiftGammaGain.fx
 
 // Set to 1 to enable.
 #define LIFT_GAMMA_GAIN_ENABLED 0
@@ -486,7 +503,9 @@ uniform vec3 LGG_RGB_GAIN = vec3(1.0, 1.0, 1.0);
 //----------------------------------------------------------------
 //-------- Nvidia DLS (sharpening) configuration section ---------
 //----------------------------------------------------------------
-// https://github.com/DadSchoorse/vkBasalt/blob/master/src/shader/dls.frag.glsl
+// Description: Provides a good quality sharpening effect with low computational requirements.
+// License: BSD 3-Clause
+// Source: https://github.com/DadSchoorse/vkBasalt/blob/master/src/shader/dls.frag.glsl
 
 // Set to 1 to enable.
 #define NVIDIA_DLS_ENABLED 0
@@ -510,9 +529,10 @@ uniform vec3 LGG_RGB_GAIN = vec3(1.0, 1.0, 1.0);
 //----------------------------------------------------------------
 //------------ Natural Vision configuration section --------------
 //----------------------------------------------------------------
-// https://github.com/libretro/glsl-shaders/blob/master/misc/natural-vision.glsl
-
+// Description: Seems to darken the image.
 // NOTE: This shader causes issues with green colors when used with some other shaders.
+// License: GPL v2
+// https://github.com/libretro/glsl-shaders/blob/master/misc/natural-vision.glsl
 
 // Set to 1 to enable.
 #define NATURAL_VISION_ENABLED 0
@@ -547,7 +567,9 @@ uniform vec3 LGG_RGB_GAIN = vec3(1.0, 1.0, 1.0);
 //----------------------------------------------------------------
 //----------------- Sepia configuration section ------------------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Sepia.fx
+// Description: Applies a sepia effect to the image.
+// License: MIT.
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Sepia.fx
 
 // Set to 1 to enable.
 #define SEPIA_ENABLED 0
@@ -566,7 +588,9 @@ uniform vec3 SEPIA_TINT = vec3(0.55, 0.43, 0.42);
 //----------------------------------------------------------------
 //------------- Techicolor 1 configuration section ---------------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Technicolor.fx
+// Description: Desaturates the image.
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Technicolor.fx
 
 // Set to 1 to enable.
 #define TECHNICOLOR1_ENABLED 0
@@ -589,7 +613,9 @@ uniform vec3 TC1_RGB_NEGATIVE_AMOUNT = vec3(0.88, 0.88, 0.88);
 //----------------------------------------------------------------
 //------------- Techicolor 2 configuration section ---------------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Technicolor2.fx
+// Description: Saturates the image.
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Technicolor2.fx
 
 // Set to 1 to enable.
 #define TECHNICOLOR2_ENABLED 0
@@ -619,7 +645,9 @@ uniform vec3 TC2_COLORSTRENGTH = vec3(0.2, 0.2, 0.2);
 //----------------------------------------------------------------
 //---------------- Tonemap configuration section -----------------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Tonemap.fx
+// Description: Various controls over the color and brightness of the image.
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Tonemap.fx
 
 // Set to 1 to enable.
 #define TONEMAP_ENABLED 0
@@ -659,10 +687,11 @@ uniform vec3 TONEMAP_FOGCOLOR = vec3(0.0, 0.0, 1.0);
 //----------------------------------------------------------------
 //--------------- Vibrance configuration section -----------------
 //----------------------------------------------------------------
-// https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Vibrance.fx
-
-// Vibrance intelligently boosts the saturation of pixels so pixels that had little color get a larger boost than pixels that had a lot.
+// Description: Vibrance intelligently boosts the saturation of pixels so pixels that
+// had little color get a larger boost than pixels that had a lot.
 // This avoids oversaturation of pixels that were already very saturated.
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Vibrance.fx
 
 // Set to 1 to enable.
 #define VIBRANCE_ENABLED 0
