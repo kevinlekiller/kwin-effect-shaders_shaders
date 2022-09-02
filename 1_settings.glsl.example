@@ -224,6 +224,12 @@ uniform vec2 CHROMATICABERRATION_SHIFT = vec2(2.5, -0.5);
 // Default: 0
 #define DALTONIZE_METHOD 0
 
+// Apply correction after doing color adjustment.
+// 0 -> Disabled
+// 1 -> Enabled
+// Default: 1
+#define DALTONIZATION_CORRECTION 1
+
 #endif
 //----------------------------------------------------------------
 //---------------- Deband configuration section ------------------

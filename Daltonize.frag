@@ -27,14 +27,15 @@ vec3 daltonization_rgb2lms(vec3 rgb) {
 // For some reason, setting the function name to shader_daltonize doesn't work.
 void shader_daltonization() {
     vec3 lms;
+    vec3 outputColor = g_Color.rgb;
     switch (DALTONIZE_METHOD) {
         case 1: // Protanopia
-            g_Color.rgb = vec3(g_Color.r * 0.56667 + g_Color.g * 0.43333 + g_Color.b * 0.00000,
+            outputColor = vec3(g_Color.r * 0.56667 + g_Color.g * 0.43333 + g_Color.b * 0.00000,
                 g_Color.r * 0.55833 + g_Color.g * 0.44267 + g_Color.b * 0.00000,
                 g_Color.r * 0.00000 + g_Color.g * 0.24167 + g_Color.b * 0.75833);
             break;
         case 2: // Protanomaly
-            g_Color.rgb = vec3(g_Color.r * 0.81667 + g_Color.g * 0.18333 + g_Color.b * 0.00000,
+            outputColor = vec3(g_Color.r * 0.81667 + g_Color.g * 0.18333 + g_Color.b * 0.00000,
                 g_Color.r * 0.33333 + g_Color.g * 0.66667 + g_Color.b * 0.00000,
                 g_Color.r * 0.00000 + g_Color.g * 0.12500 + g_Color.b * 0.87500);
             break;
@@ -43,15 +44,15 @@ void shader_daltonization() {
             lms.x = 1.0 * lms.x + 0.0 * lms.y + 0.0 * lms.z;
             lms.y = 0.494207 * lms.x + 0.0 * lms.y + 1.24827 * lms.z;
             lms.z = 0.0 * lms.x + 0.0 * lms.y + 1.0 * lms.z;
-            g_Color.rgb =  daltonization_lms2rgb(lms);
+            outputColor =  daltonization_lms2rgb(lms);
             break;
         case 4: // Deuteranopia
-            g_Color.rgb = vec3(g_Color.r * 0.62500 + g_Color.g * 0.37500 + g_Color.b * 0.00000,
+            outputColor = vec3(g_Color.r * 0.62500 + g_Color.g * 0.37500 + g_Color.b * 0.00000,
                 g_Color.r * 0.70000 + g_Color.g * 0.30000 + g_Color.b * 0.00000,
                 g_Color.r * 0.00000 + g_Color.g * 0.30000 + g_Color.b * 0.70000);
             break;
         case 5: // Deuteranomaly
-            g_Color.rgb = vec3(g_Color.r * 0.80000 + g_Color.g * 0.20000 + g_Color.b * 0.00000,
+            outputColor = vec3(g_Color.r * 0.80000 + g_Color.g * 0.20000 + g_Color.b * 0.00000,
                 g_Color.r * 0.00000 + g_Color.g * 0.25833 + g_Color.b * 0.74167,
                 g_Color.r * 0.00000 + g_Color.g * 0.14167 + g_Color.b * 0.85833);
             break;
@@ -60,25 +61,25 @@ void shader_daltonization() {
             lms.x = 1.0 * lms.x + 0.0 * lms.y + 0.0 * lms.z;
             lms.y = 0.0 * lms.x + 1.0 * lms.y + 0.0 * lms.z;
             lms.z = -0.395913 * lms.x + 0.801109 * lms.y + 0.0 * lms.z;
-            g_Color.rgb = daltonization_lms2rgb(lms);
+            outputColor = daltonization_lms2rgb(lms);
             break;
         case 7: // Tritanopia
-            g_Color.rgb = vec3(g_Color.r * 0.95 + g_Color.g * 0.05 + g_Color.b * 0.00000,
+            outputColor = vec3(g_Color.r * 0.95 + g_Color.g * 0.05 + g_Color.b * 0.00000,
                 g_Color.r * 0.00000 + g_Color.g * 0.43333 + g_Color.b * 0.56667,
                 g_Color.r * 0.00000 + g_Color.g * 0.47500 + g_Color.b * 0.52500);
             break;
         case 8: // Tritanomaly
-            g_Color.rgb = vec3(g_Color.r * 0.96667 + g_Color.g * 0.33333 + g_Color.b * 0.00000,
+            outputColor = vec3(g_Color.r * 0.96667 + g_Color.g * 0.33333 + g_Color.b * 0.00000,
                 g_Color.r * 0.00000 + g_Color.g * 0.73333 + g_Color.b * 0.26667,
                 g_Color.r * 0.00000 + g_Color.g * 0.18333 + g_Color.b * 0.81667);
             break;
         case 9: // Achromatopsia
-            g_Color.rgb = vec3(g_Color.r * 0.299 + g_Color.g * 0.587 + g_Color.b * 0.114,
+            outputColor = vec3(g_Color.r * 0.299 + g_Color.g * 0.587 + g_Color.b * 0.114,
                 g_Color.r * 0.299 + g_Color.g * 0.587 + g_Color.b * 0.114,
                 g_Color.r * 0.299 + g_Color.g * 0.587 + g_Color.b * 0.114);
             break;
         case 10: // Achromatomaly
-            g_Color.rgb = vec3(g_Color.r * 0.618 + g_Color.g * 0.320 + g_Color.b * 0.062,
+            outputColor = vec3(g_Color.r * 0.618 + g_Color.g * 0.320 + g_Color.b * 0.062,
                 g_Color.r * 0.163 + g_Color.g * 0.775 + g_Color.b * 0.062,
                 g_Color.r * 0.163 + g_Color.g * 0.320 + g_Color.b * 0.516);
             break;
@@ -88,9 +89,21 @@ void shader_daltonization() {
             lms.x = 0.0 * lms.x + 2.02344 * lms.y + -2.52581 * lms.z;
             lms.y = 0.0 * lms.x + 1.0 * lms.y + 0.0 * lms.z;
             lms.z = 0.0 * lms.x + 0.0 * lms.y + 1.0 * lms.z;
-            g_Color.rgb = daltonization_lms2rgb(lms);
+            outputColor = daltonization_lms2rgb(lms);
             break;
     }
+    if (DALTONIZATION_CORRECTION > 0) {
+        // Isolate invisible rgbs to rgb vision deficiency (calculate error matrix)
+        vec3 error = (g_Color.rgb - outputColor);
+        // Shift rgbs towards visible spectrum (apply error modifications)
+        vec3 correction;
+        correction.r = 0.0; // (error.r * 0.0) + (error.g * 0.0) + (error.b * 0.0);
+        correction.g = (error.r * 0.7) + (error.g * 1.0); // + (error.b * 0.0);
+        correction.b = (error.r * 0.7) + (error.b * 1.0); // + (error.g * 0.0);
+        // Add compensation to original values
+        outputColor = g_Color.rgb + correction;
+    }
+    g_Color.rgb = outputColor;
 }
 
 #endif //DALTONIZE_ENABLED
