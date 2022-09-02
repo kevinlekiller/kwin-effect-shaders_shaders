@@ -147,7 +147,7 @@ SHADERS); // Don't change this line.
 //----------------------------------------------------------------
 //--------------- Cartoon configuration section -----------------
 //----------------------------------------------------------------
-// Description: Darkens edges to give a cartonish effect.
+// Description: Darkens edges to give a cartoonish effect.
 // License: MIT
 // Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Cartoon.fx
 
@@ -375,7 +375,7 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 // Description: Anti-aliasing shader, with very high computational cost, blurs the image significantly.
 // Personal recommendation is to use alternatives if possible, for example: https://docs.mesa3d.org/gallium/postprocess.html#current-filters
 // License: Custom (Nvidia License)
-// https://gist.github.com/kosua20/0c506b81b3812ac900048059d2383126
+// Source: https://gist.github.com/kosua20/0c506b81b3812ac900048059d2383126
 
 // Set to 1 to enable.
 #define FXAA3_ENABLED 0
@@ -532,7 +532,7 @@ uniform vec3 LGG_RGB_GAIN = vec3(1.0, 1.0, 1.0);
 // Description: Seems to darken the image.
 // NOTE: This shader causes issues with green colors when used with some other shaders.
 // License: GPL v2
-// https://github.com/libretro/glsl-shaders/blob/master/misc/natural-vision.glsl
+// Source: https://github.com/libretro/glsl-shaders/blob/master/misc/natural-vision.glsl
 
 // Set to 1 to enable.
 #define NATURAL_VISION_ENABLED 0
