@@ -20,9 +20,10 @@
 #define SHADER_FAST_SHARPEN         17
 #define SHADER_ADAPTIVE_SHARPEN     18
 #define SHADER_FAST_GAUSS_BLURV     19
-#define SHADER_FILM_NOISE           20
-#define SHADER_GRAYSCALE            21
-#define SHADERS                     22
+#define SHADER_VIGNETTE             20
+#define SHADER_FILM_NOISE           21
+#define SHADER_GRAYSCALE            22
+#define SHADERS                     23
 //----------------------------------------------------------------
 //----------------------------------------------------------------
 //------------------ Start of user configuration -----------------
@@ -57,6 +58,7 @@ const int SHADER_ORDER[SHADERS+1] = int[] ( // Don't change this line.
     SHADER_FAST_SHARPEN,
     SHADER_ADAPTIVE_SHARPEN,
     SHADER_FAST_GAUSS_BLURV,
+    SHADER_VIGNETTE,
     SHADER_FILM_NOISE,
     SHADER_GRAYSCALE,
 
@@ -262,15 +264,15 @@ uniform vec2 CHROMATICABERRATION_SHIFT = vec2(2.5, -0.5);
 #define DPX_CONTRAST 0.1
 
 //   Range: 0.1 to 2.5
-// Default: 2.5, 2.5, 2.5
+// Default: vec3(2.5, 2.5, 2.5)
 uniform vec3 DPX_COLORFULNESS = vec3(2.5, 2.5, 2.5);
 
 //   Range: 1.0 to 15.0
-// Default: 8.0, 8.0, 8.0
+// Default: vec3(8.0, 8.0, 8.0)
 uniform vec3 DPX_RGB_CURVE = vec3(8.0, 8.0, 8.0);
 
 //   Range: 0.2 to 0.5
-// Default: 0.36, 0.36, 0.34
+// Default: vec3(0.36, 0.36, 0.34)
 uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 
 #endif
@@ -486,17 +488,17 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 
 // Adjust shadows for red, green and blue.
 //   Range: 0.0 to 2.0
-// Default: 1.0, 1.0, 1.0
+// Default: vec3(1.0, 1.0, 1.0)
 uniform vec3 LGG_RGB_LIFT = vec3(1.0, 1.0, 1.0);
 
 // Adjust midtones for red, green and blue
 //   Range: 0.0 to 2.0
-// Default: 1.0, 1.0, 1.0
+// Default: vec3(1.0, 1.0, 1.0)
 uniform vec3 LGG_RGB_GAMMA = vec3(1.0, 1.0, 1.0);
 
 // Adjust highlights for red, green and blue.
 //   Range: 0.0 to 2.0
-// Default: 1.0, 1.0, 1.0
+// Default: vec3(1.0, 1.0, 1.0)
 uniform vec3 LGG_RGB_GAIN = vec3(1.0, 1.0, 1.0);
 
 #endif
@@ -581,7 +583,7 @@ uniform vec3 LGG_RGB_GAIN = vec3(1.0, 1.0, 1.0);
 #define SEPIA_STRENGTH 0.58
 
 //   Range: 0.0 to 1.0
-// Default: 0.55, 0.43, 0.42
+// Default: vec3(0.55, 0.43, 0.42)
 uniform vec3 SEPIA_TINT = vec3(0.55, 0.43, 0.42);
 
 #endif
@@ -601,7 +603,7 @@ uniform vec3 SEPIA_TINT = vec3(0.55, 0.43, 0.42);
 #define TC1_POWER 4.0
 
 //   Range: 0.0 to 1.0
-// Default: 0.88 0.88 0.88
+// Default: vec3(0.88 0.88 0.88)
 uniform vec3 TC1_RGB_NEGATIVE_AMOUNT = vec3(0.88, 0.88, 0.88);
 
 // Adjust the strength of the effect.
@@ -623,7 +625,7 @@ uniform vec3 TC1_RGB_NEGATIVE_AMOUNT = vec3(0.88, 0.88, 0.88);
 
 // Higher means darker and more intense colors.
 //   Range: 0.0 to 1.0
-// Default: 0.2 0.2 0.2
+// Default: vec3(0.2 0.2 0.2)
 uniform vec3 TC2_COLORSTRENGTH = vec3(0.2, 0.2, 0.2);
 
 // Higher means brighter image.
@@ -680,7 +682,7 @@ uniform vec3 TC2_COLORSTRENGTH = vec3(0.2, 0.2, 0.2);
 
 // Which color tint to remove
 //   Range: 0.0 to 1.0
-// Default: 0.0, 0.0, 1.0
+// Default: vec3(0.0, 0.0, 1.0)
 uniform vec3 TONEMAP_FOGCOLOR = vec3(0.0, 0.0, 1.0);
 
 #endif
@@ -706,7 +708,7 @@ uniform vec3 TONEMAP_FOGCOLOR = vec3(0.0, 0.0, 1.0);
 // This is handy if you are colorblind and less sensitive to a specific color.
 // You can then boost that color more than the others.
 //   Range: 0.0 to 10.0
-// Default: 1.0, 1.0, 1.0
+// Default: vec3(1.0, 1.0, 1.0)
 uniform vec3 VIB_RGB_BALANCE = vec3(1.0, 1.0, 1.0);
 
 // Luma type
@@ -715,6 +717,44 @@ uniform vec3 VIB_RGB_BALANCE = vec3(1.0, 1.0, 1.0);
 //   Range: 0 or 1
 // Default: 0
 #define VIB_LUMA 0
+
+#endif
+//----------------------------------------------------------------
+//--------------- Vignette configuration section -----------------
+//----------------------------------------------------------------
+// Description: Darkens the edges of the image to make it look more like it was shot with a camera lens.
+// May cause banding artifacts.
+// License: MIT
+// Source: https://github.com/CeeJayDK/SweetFX/blob/master/Shaders/Vignette.fx
+
+// Set to 1 to enable.
+#define VIGNETTE_ENABLED 0
+#if VIGNETTE_ENABLED == 1 // Don't change this line.
+
+// Sets a width to height ratio. 1.00 (1/1) is perfectly round, while 1.60 (16/10) is 60 % wider than it's high.
+//   Range: 0.15 to 6.0
+// Default: 1.0
+#define VIGNETTE_RATIO 1.0
+
+// Lower values = stronger radial effect from center.
+//   Range: -1.0 to 3.0
+// Default: 2.0
+#define VIGNETTE_RADIUS 2.0
+
+// Strength of black. -2.00 = Max Black, 1.00 = Max White.
+//   Range: -2.0 to 1.0
+// Default: -1.0
+#define VIGNETTE_AMOUNT -1.0
+
+// How far away from the center the change should start to really grow strong (odd numbers cause a larger fps drop than even numbers).
+//   Range: 2 to 16
+// Default: 2
+#define VIGNETTE_SLOPE 2
+
+// Center of the effect.
+//   Range: 0.0 to 1.0
+// Default: vec2(0.5, 0.5);
+uniform vec2 VIGNETTE_CENTER = vec2(0.5, 0.5);
 
 #endif
 //----------------------------------------------------------------

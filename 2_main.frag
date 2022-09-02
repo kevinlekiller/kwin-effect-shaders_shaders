@@ -35,6 +35,7 @@ out vec4 g_FragColor;
 // Initially set to the current pixel color, at the end of the program g_FragColor is set to this.
 vec4 g_Color;
 vec4 g_SourceSize;
+// Screen width x Screen height
 uniform vec2 g_TextureSize;
 // AKA BUFFER_PIXEL_SIZE in Reshade
 vec2 g_PixelSize;
@@ -104,6 +105,9 @@ void shader_tonemap();
 #endif
 #if VIBRANCE_ENABLED == 1
 void shader_vibrance();
+#endif
+#if VIGNETTE_ENABLED == 1
+void shader_vignette();
 #endif
 
 void main() {
@@ -220,6 +224,11 @@ void main() {
             #if VIBRANCE_ENABLED == 1
             case SHADER_VIBRANCE:
                 shader_vibrance();
+                break;
+            #endif
+            #if VIGNETTE_ENABLED == 1
+            case SHADER_VIGNETTE:
+                shader_vignette();
                 break;
             #endif
             default:
