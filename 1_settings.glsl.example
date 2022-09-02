@@ -22,8 +22,9 @@
 #define SHADER_FAST_GAUSS_BLURV     19
 #define SHADER_VIGNETTE             20
 #define SHADER_FILM_NOISE           21
-#define SHADER_GRAYSCALE            22
-#define SHADERS                     23
+#define SHADER_DALTONIZE            22
+#define SHADER_GRAYSCALE            23
+#define SHADERS                     24
 //----------------------------------------------------------------
 //----------------------------------------------------------------
 //------------------ Start of user configuration -----------------
@@ -60,6 +61,7 @@ const int SHADER_ORDER[SHADERS+1] = int[] ( // Don't change this line.
     SHADER_FAST_GAUSS_BLURV,
     SHADER_VIGNETTE,
     SHADER_FILM_NOISE,
+    SHADER_DALTONIZE,
     SHADER_GRAYSCALE,
 
 SHADERS); // Don't change this line.
@@ -192,6 +194,35 @@ uniform vec2 CHROMATICABERRATION_SHIFT = vec2(2.5, -0.5);
 //   Range: 0.0 to 1.0
 // Default: 0.5
 #define CHROMATICABERRATION_STRENGTH 0.5
+
+#endif
+//----------------------------------------------------------------
+//--------------- Daltonize configuration section ----------------
+//----------------------------------------------------------------
+// Description: Daltonization is a process performed by the computer that allows people with color
+// vision deficiencies to distinguish a range of detail they are otherwise excluded from perceiving.
+// See http://www.daltonize.org/p/about.html
+// License: MIT
+// Source: https://github.com/patriciogonzalezvivo/lygia/blob/main/color/daltonize.glsl
+
+// Set to 1 to enable.
+#define DALTONIZE_ENABLED 0
+#if DALTONIZE_ENABLED == 1 // Don't change this line.
+
+// Method used for color adjustment.
+//  0 -> Protanope
+//  1 -> Protanopia
+//  2 -> Protanomaly
+//  3 -> Deuteranope
+//  4 -> Deuteranopia
+//  5 -> Deuteranomaly
+//  6 -> Tritanope
+//  7 -> Tritanopia
+//  8 -> Tritanomaly
+//  9 -> Achromatopsia
+// 10 -> Achromatomaly
+// Default: 0
+#define DALTONIZE_METHOD 0
 
 #endif
 //----------------------------------------------------------------

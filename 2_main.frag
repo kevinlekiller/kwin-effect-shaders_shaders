@@ -55,6 +55,9 @@ void shader_cartoon();
 #if CHROMATICABERRATION_ENABLED == 1
 void shader_chromatic_aberration();
 #endif
+#if DALTONIZE_ENABLED == 1
+void shader_daltonization();
+#endif
 #if DEBAND_ENABLED == 1
 void shader_deband();
 #endif
@@ -140,6 +143,11 @@ void main() {
             #if CHROMATICABERRATION_ENABLED == 1
             case SHADER_CHROMATIC_ABERRATION:
                 shader_chromatic_aberration();
+                break;
+            #endif
+            #if DALTONIZE_ENABLED == 1
+            case SHADER_DALTONIZE:
+                shader_daltonization();
                 break;
             #endif
             #if DEBAND_ENABLED == 1
