@@ -11,20 +11,21 @@
 #define SHADER_TONEMAP               8
 #define SHADER_LIFT_GAMMA_GAIN       9
 #define SHADER_LEVELS               10
-#define SHADER_CHROMATIC_ABERRATION 11
-#define SHADER_CARTOON              12
-#define SHADER_ADVANCED_CARTOON     13
-#define SHADER_FXAA3                14
-#define SHADER_AMD_CAS              15
-#define SHADER_NVIDIA_DLS           16
-#define SHADER_FAST_SHARPEN         17
-#define SHADER_ADAPTIVE_SHARPEN     18
-#define SHADER_FAST_GAUSS_BLURV     19
-#define SHADER_VIGNETTE             20
-#define SHADER_FILM_NOISE           21
-#define SHADER_DALTONIZE            22
-#define SHADER_GRAYSCALE            23
-#define SHADERS                     24
+#define SHADER_BLOOM                11
+#define SHADER_CHROMATIC_ABERRATION 12
+#define SHADER_CARTOON              13
+#define SHADER_ADVANCED_CARTOON     14
+#define SHADER_FXAA3                15
+#define SHADER_AMD_CAS              16
+#define SHADER_NVIDIA_DLS           17
+#define SHADER_FAST_SHARPEN         18
+#define SHADER_ADAPTIVE_SHARPEN     19
+#define SHADER_FAST_GAUSS_BLURV     20
+#define SHADER_VIGNETTE             21
+#define SHADER_FILM_NOISE           22
+#define SHADER_DALTONIZE            23
+#define SHADER_GRAYSCALE            24
+#define SHADERS                     25
 //----------------------------------------------------------------
 //----------------------------------------------------------------
 //------------------ Start of user configuration -----------------
@@ -50,6 +51,7 @@ const int SHADER_ORDER[SHADERS+1] = int[] ( // Don't change this line.
     SHADER_TONEMAP,
     SHADER_LIFT_GAMMA_GAIN,
     SHADER_LEVELS,
+    SHADER_BLOOM,
     SHADER_CHROMATIC_ABERRATION,
     SHADER_CARTOON,
     SHADER_ADVANCED_CARTOON,
@@ -125,6 +127,36 @@ SHADERS); // Don't change this line.
 //   Range: > 0.0
 // Default: 0.5
 #define ADVANCED_CARTOON_BLACK_BORDER_SEN 0.5
+
+#endif
+//----------------------------------------------------------------
+//------------ Bloom configuration section ------------
+//----------------------------------------------------------------
+// Description: Adds a glowing effect to brighter parts of an image.
+// License: MIT
+// Source: https://github.com/spite/Wagner/blob/master/fragment-shaders/bloom2-fs.glsl
+
+// Set to 1 to enable.
+#define BLOOM_ENABLED 0
+#if BLOOM_ENABLED == 1 // Don't change this line.
+
+// Adjusts the strength of the effect.
+// Raising this will make the effect brighter.
+//   Range: > 0.0
+// Default: 0.4
+#define BLOOM_STRENGTH 0.4
+
+// Limits the radius of the effect.
+// Raising this will cause more haloing to be seen.
+//   Range: > 0.0
+// Default: 0.0025
+#define BLOOM_RADIUS 0.0025
+
+// Limits how bright a pixel must be for a effect to be applied to it.
+// Raising this will not apply the effect to dark colors.
+//   Range: > 1.0
+// Default: 1.0
+#define BLOOM_THRESHOLD 1.0
 
 #endif
 //----------------------------------------------------------------

@@ -46,6 +46,9 @@ void shader_adaptive_sharpen();
 #if ADVANCED_CARTOON_ENABLED == 1
 void shader_advanced_cartoon();
 #endif
+#if BLOOM_ENABLED == 1
+void shader_bloom();
+#endif
 #if CAS_ENABLED == 1
 void shader_amd_cas();
 #endif
@@ -128,6 +131,11 @@ void main() {
             #if ADVANCED_CARTOON_ENABLED == 1
             case SHADER_ADVANCED_CARTOON:
                 shader_advanced_cartoon();
+                break;
+            #endif
+            #if BLOOM_ENABLED == 1
+            case SHADER_BLOOM:
+                shader_bloom();
                 break;
             #endif
             #if CAS_ENABLED == 1
