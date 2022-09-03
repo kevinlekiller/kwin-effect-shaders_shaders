@@ -130,7 +130,7 @@ SHADERS); // Don't change this line.
 
 #endif
 //----------------------------------------------------------------
-//------------ Bloom configuration section ------------
+//----------------- Bloom configuration section ------------------
 //----------------------------------------------------------------
 // Description: Adds a glowing effect to brighter parts of an image.
 // License: MIT
