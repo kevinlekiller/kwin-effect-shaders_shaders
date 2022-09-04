@@ -445,7 +445,7 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 //----------------------------------------------------------------
 // Description: Anti-aliasing shader, with very high computational cost, blurs the image significantly.
 // Personal recommendation is to use alternatives if possible, for example: https://docs.mesa3d.org/gallium/postprocess.html#current-filters
-// License: Custom (Nvidia License)
+// License: Public Domain or BSD 3-Clause
 // Source: https://gist.github.com/kosua20/0c506b81b3812ac900048059d2383126
 
 // Set to 1 to enable.
@@ -514,7 +514,7 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 // 2 -> ITU-R BT.709
 // 3 -> ITU-R BT.2100
 // Default: 0
-#define GRAYSCALE_METHOD 1
+#define GRAYSCALE_METHOD 0
 
 #endif
 //----------------------------------------------------------------

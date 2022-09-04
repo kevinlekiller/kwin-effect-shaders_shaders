@@ -1,4 +1,7 @@
 #if FXAA3_ENABLED == 1
+// https://web.archive.org/web/20220401062604/https://stackoverflow.com/questions/12170575/using-nvidia-fxaa-in-my-code-whats-the-licensing-model
+// According to the author as linked above, this is public domain. Wikipedia also says BSD 3-Cluase.
+
 /*============================================================================
                     NVIDIA FXAA 3.11 by TIMOTHY LOTTES
 ------------------------------------------------------------------------------
@@ -190,7 +193,6 @@ DAMAGES.
     #define FXAA3_QUALITY__P4 12.0
 #endif
 void shader_fxaa3() {
-    vec2 fxaaQualityRcpFrame = 1.0 / g_TextureSize.xy;
     vec2 posM;
     posM.x = g_oTexcoord.xy.x;
     posM.y = g_oTexcoord.xy.y;
@@ -216,13 +218,13 @@ void shader_fxaa3() {
     float lumaNWSW = lumaNW + lumaSW;
     float edgeHorz = abs((-2.0 * lumaW) + lumaNWSW)        + (abs((-2.0 * rgbyM.y) + lumaNS) * 2.0) + abs((-2.0 * lumaE) + lumaNESE);
     float edgeVert = abs((-2.0 * lumaS) + lumaSW + lumaSE) + (abs((-2.0 * rgbyM.y) + lumaWE) * 2.0) + abs((-2.0 * lumaN) + lumaNWNE);
-    float lengthSign = fxaaQualityRcpFrame.x;
+    float lengthSign = g_PixelSize.x;
     bool horzSpan = edgeHorz >= edgeVert;
     if (!horzSpan) {
         lumaN = lumaW;
         lumaS = lumaE;
     } else {
-        lengthSign = fxaaQualityRcpFrame.y;
+        lengthSign = g_PixelSize.y;
     }
     float gradientN = lumaN - rgbyM.y;
     float gradientS = lumaS - rgbyM.y;
@@ -236,8 +238,8 @@ void shader_fxaa3() {
     posB.x = posM.x;
     posB.y = posM.y;
     vec2 offNP;
-    offNP.x = (!horzSpan) ? 0.0 : fxaaQualityRcpFrame.x;
-    offNP.y = ( horzSpan) ? 0.0 : fxaaQualityRcpFrame.y;
+    offNP.x = (!horzSpan) ? 0.0 : g_PixelSize.x;
+    offNP.y = ( horzSpan) ? 0.0 : g_PixelSize.y;
     if (!horzSpan) {
         posB.x += lengthSign * 0.5;
     } else {
