@@ -56,15 +56,15 @@ void shader_nvidia_dls()
     //  a (x) b
     //  g  c  f
 
-    vec4 a = textureLod0Offset(g_Texture, g_oTexcoord, ivec2(-1,  0));
-    vec4 b = textureLod0Offset(g_Texture, g_oTexcoord, ivec2( 1,  0));
-    vec4 c = textureLod0Offset(g_Texture, g_oTexcoord, ivec2( 0,  1));
-    vec4 d = textureLod0Offset(g_Texture, g_oTexcoord, ivec2( 0, -1));
+    vec4 a = textureLod0Offset(g_Texture, g_TexCoord, ivec2(-1,  0));
+    vec4 b = textureLod0Offset(g_Texture, g_TexCoord, ivec2( 1,  0));
+    vec4 c = textureLod0Offset(g_Texture, g_TexCoord, ivec2( 0,  1));
+    vec4 d = textureLod0Offset(g_Texture, g_TexCoord, ivec2( 0, -1));
 
-    vec4 e = textureLod0Offset(g_Texture, g_oTexcoord, ivec2(-1, -1));
-    vec4 f = textureLod0Offset(g_Texture, g_oTexcoord, ivec2( 1,  1));
-    vec4 g = textureLod0Offset(g_Texture, g_oTexcoord, ivec2(-1,  1));
-    vec4 h = textureLod0Offset(g_Texture, g_oTexcoord, ivec2( 1, -1));
+    vec4 e = textureLod0Offset(g_Texture, g_TexCoord, ivec2(-1, -1));
+    vec4 f = textureLod0Offset(g_Texture, g_TexCoord, ivec2( 1,  1));
+    vec4 g = textureLod0Offset(g_Texture, g_TexCoord, ivec2(-1,  1));
+    vec4 h = textureLod0Offset(g_Texture, g_TexCoord, ivec2( 1, -1));
 
     float lx = DLS_GetLuma(g_Color);
 

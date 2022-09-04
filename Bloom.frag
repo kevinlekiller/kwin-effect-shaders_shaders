@@ -30,7 +30,7 @@ void shader_bloom() {
     vec4 sum = vec4(0);
     for (int num = -2; num <= 2; num++) {
         for (int i = -2; i <= 2; i++) {
-            sum += texture(g_Texture, g_oTexcoord + vec2(i, num) * BLOOM_RADIUS);
+            sum += texture(g_Texture, g_TexCoord + vec2(i, num) * BLOOM_RADIUS);
         }
     }
     sum /= 25.0;

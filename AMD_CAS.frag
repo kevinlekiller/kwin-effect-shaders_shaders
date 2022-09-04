@@ -26,15 +26,15 @@ void shader_amd_cas() {
     //  d(e)f
     //  g h i
 
-    vec3 a = textureLod0Offset(g_Texture, g_oTexcoord, ivec2(-1,-1)).rgb;
-    vec3 b = textureLod0Offset(g_Texture, g_oTexcoord, ivec2( 0,-1)).rgb;
-    vec3 c = textureLod0Offset(g_Texture, g_oTexcoord, ivec2( 1,-1)).rgb;
-    vec3 d = textureLod0Offset(g_Texture, g_oTexcoord, ivec2(-1, 0)).rgb;
+    vec3 a = textureLod0Offset(g_Texture, g_TexCoord, ivec2(-1,-1)).rgb;
+    vec3 b = textureLod0Offset(g_Texture, g_TexCoord, ivec2( 0,-1)).rgb;
+    vec3 c = textureLod0Offset(g_Texture, g_TexCoord, ivec2( 1,-1)).rgb;
+    vec3 d = textureLod0Offset(g_Texture, g_TexCoord, ivec2(-1, 0)).rgb;
     vec3 e = g_Color.rgb;
-    vec3 f = textureLod0Offset(g_Texture, g_oTexcoord, ivec2( 1, 0)).rgb;
-    vec3 g = textureLod0Offset(g_Texture, g_oTexcoord, ivec2(-1, 1)).rgb;
-    vec3 h = textureLod0Offset(g_Texture, g_oTexcoord, ivec2( 0, 1)).rgb;
-    vec3 i = textureLod0Offset(g_Texture, g_oTexcoord, ivec2( 1, 1)).rgb;
+    vec3 f = textureLod0Offset(g_Texture, g_TexCoord, ivec2( 1, 0)).rgb;
+    vec3 g = textureLod0Offset(g_Texture, g_TexCoord, ivec2(-1, 1)).rgb;
+    vec3 h = textureLod0Offset(g_Texture, g_TexCoord, ivec2( 0, 1)).rgb;
+    vec3 i = textureLod0Offset(g_Texture, g_TexCoord, ivec2( 1, 1)).rgb;
 
     // Soft min and max.
     //  a b c             b

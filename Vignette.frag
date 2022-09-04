@@ -33,7 +33,7 @@
 */
 
 void shader_vignette() {
-    vec2 distance_xy = g_oTexcoord - VIGNETTE_CENTER;
+    vec2 distance_xy = g_TexCoord - VIGNETTE_CENTER;
     distance_xy *= vec2((1.0 / g_TextureSize.x) / (1.0 / g_TextureSize.y), VIGNETTE_RATIO);
     distance_xy /= VIGNETTE_RADIUS;
     g_Color.rgb *= (1.0 + pow(dot(distance_xy, distance_xy), VIGNETTE_SLOPE * 0.5) * VIGNETTE_AMOUNT);

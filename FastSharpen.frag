@@ -20,10 +20,10 @@ void shader_fast_sharpen() {
     vec2 g10 = vec2(0.3333, -1.0) * g_SourceSize.zw;
     vec2 g12 = vec2(-0.3333, 1.0) * g_SourceSize.zw;
     vec2 g21 = vec2(1.0, 0.3333) * g_SourceSize.zw;
-    vec3 c10 = texture(g_Texture, g_oTexcoord + g10).rgb;
-    vec3 c01 = texture(g_Texture, g_oTexcoord + g01).rgb;
-    vec3 c21 = texture(g_Texture, g_oTexcoord + g21).rgb;
-    vec3 c12 = texture(g_Texture, g_oTexcoord + g12).rgb;
+    vec3 c10 = texture(g_Texture, g_TexCoord + g10).rgb;
+    vec3 c01 = texture(g_Texture, g_TexCoord + g01).rgb;
+    vec3 c21 = texture(g_Texture, g_TexCoord + g21).rgb;
+    vec3 c12 = texture(g_Texture, g_TexCoord + g12).rgb;
     vec3 c11 = clamp(g_Color.rgb, 0.0, 1.0);
     vec3 b11 = (c10 + c01 + c12 + c21) * 0.25;
     float contrast = max(max(c11.r, c11.g), c11.b);

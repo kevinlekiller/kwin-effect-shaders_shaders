@@ -194,8 +194,8 @@ DAMAGES.
 #endif
 void shader_fxaa3() {
     vec2 posM;
-    posM.x = g_oTexcoord.xy.x;
-    posM.y = g_oTexcoord.xy.y;
+    posM.x = g_TexCoord.xy.x;
+    posM.y = g_TexCoord.xy.y;
     vec4 rgbyM = g_Color.xyzw;
     float lumaS = textureLodOffset(g_Texture, posM, 0.0, ivec2( 0, 1)).y;
     float lumaE = textureLodOffset(g_Texture, posM, 0.0, ivec2( 1, 0)).y;

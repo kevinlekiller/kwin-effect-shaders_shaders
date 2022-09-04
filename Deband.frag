@@ -48,17 +48,17 @@ vec4 DB_average(float range, inout float h) {
     vec2 o = vec2(cos(dir), sin(dir));
     // Sample at quarter-turn intervals around the source pixel
     vec4 ref[4];
-    ref[0] = texture(g_Texture, g_oTexcoord + pt * vec2( o.x, o.y));
-    ref[1] = texture(g_Texture, g_oTexcoord + pt * vec2(-o.y, o.x));
-    ref[2] = texture(g_Texture, g_oTexcoord + pt * vec2(-o.x,-o.y));
-    ref[3] = texture(g_Texture, g_oTexcoord + pt * vec2( o.y,-o.x));
+    ref[0] = texture(g_Texture, g_TexCoord + pt * vec2( o.x, o.y));
+    ref[1] = texture(g_Texture, g_TexCoord + pt * vec2(-o.y, o.x));
+    ref[2] = texture(g_Texture, g_TexCoord + pt * vec2(-o.x,-o.y));
+    ref[3] = texture(g_Texture, g_TexCoord + pt * vec2( o.y,-o.x));
     // Return the (normalized) average
     return (ref[0] + ref[1] + ref[2] + ref[3]) / 4.0;
 }
 
 void shader_deband() {
     // Initialize the PRNG by hashing the position + a random uniform
-    vec3 m_d = vec3(g_oTexcoord, g_Random) + vec3(1.0);
+    vec3 m_d = vec3(g_TexCoord, g_Random) + vec3(1.0);
     float h_d = DB_permute(DB_permute(DB_permute(m_d.x) + m_d.y) + m_d.z);
     vec4 avg, diff;
     for (int i = 1; i <= int(DEBAND_ITERATIONS); i++) {

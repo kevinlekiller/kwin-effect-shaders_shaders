@@ -60,31 +60,31 @@ void shader_adaptive_sharpen() {
     // [      c20, c6,  c7,  c8, c17      ]
     // [           c15, c12, c14          ]
     // [                c13               ]
-    vec3 c19 = clamp(texture(g_Texture, g_oTexcoord + vec2(-3.*px,    0.)).rgb, 0.0, 1.0);
-    vec3 c21 = clamp(texture(g_Texture, g_oTexcoord + vec2(-2.*px,   -py)).rgb, 0.0, 1.0);
-    vec3 c10 = clamp(texture(g_Texture, g_oTexcoord + vec2(-2.*px,    0.)).rgb, 0.0, 1.0);
-    vec3 c20 = clamp(texture(g_Texture, g_oTexcoord + vec2(-2.*px,    py)).rgb, 0.0, 1.0);
-    vec3 c24 = clamp(texture(g_Texture, g_oTexcoord + vec2(  -px, -2.*py)).rgb, 0.0, 1.0);
-    vec3 c1  = clamp(texture(g_Texture, g_oTexcoord + vec2(  -px,    -py)).rgb, 0.0, 1.0);
-    vec3 c4  = clamp(texture(g_Texture, g_oTexcoord + vec2(  -px,     0.)).rgb, 0.0, 1.0);
-    vec3 c6  = clamp(texture(g_Texture, g_oTexcoord + vec2(  -px,     py)).rgb, 0.0, 1.0);
-    vec3 c15 = clamp(texture(g_Texture, g_oTexcoord + vec2(  -px,  2.*py)).rgb, 0.0, 1.0);
-    vec3 c22 = clamp(texture(g_Texture, g_oTexcoord + vec2(   0., -3.*py)).rgb, 0.0, 1.0);
-    vec3 c9  = clamp(texture(g_Texture, g_oTexcoord + vec2(   0., -2.*py)).rgb, 0.0, 1.0);
-    vec3 c2  = clamp(texture(g_Texture, g_oTexcoord + vec2(   0.,    -py)).rgb, 0.0, 1.0);
+    vec3 c19 = clamp(texture(g_Texture, g_TexCoord + vec2(-3.*px,    0.)).rgb, 0.0, 1.0);
+    vec3 c21 = clamp(texture(g_Texture, g_TexCoord + vec2(-2.*px,   -py)).rgb, 0.0, 1.0);
+    vec3 c10 = clamp(texture(g_Texture, g_TexCoord + vec2(-2.*px,    0.)).rgb, 0.0, 1.0);
+    vec3 c20 = clamp(texture(g_Texture, g_TexCoord + vec2(-2.*px,    py)).rgb, 0.0, 1.0);
+    vec3 c24 = clamp(texture(g_Texture, g_TexCoord + vec2(  -px, -2.*py)).rgb, 0.0, 1.0);
+    vec3 c1  = clamp(texture(g_Texture, g_TexCoord + vec2(  -px,    -py)).rgb, 0.0, 1.0);
+    vec3 c4  = clamp(texture(g_Texture, g_TexCoord + vec2(  -px,     0.)).rgb, 0.0, 1.0);
+    vec3 c6  = clamp(texture(g_Texture, g_TexCoord + vec2(  -px,     py)).rgb, 0.0, 1.0);
+    vec3 c15 = clamp(texture(g_Texture, g_TexCoord + vec2(  -px,  2.*py)).rgb, 0.0, 1.0);
+    vec3 c22 = clamp(texture(g_Texture, g_TexCoord + vec2(   0., -3.*py)).rgb, 0.0, 1.0);
+    vec3 c9  = clamp(texture(g_Texture, g_TexCoord + vec2(   0., -2.*py)).rgb, 0.0, 1.0);
+    vec3 c2  = clamp(texture(g_Texture, g_TexCoord + vec2(   0.,    -py)).rgb, 0.0, 1.0);
     vec3 c0  = clamp(g_Color.rgb,   0.0,                     1.0);
-    vec3 c7  = clamp(texture(g_Texture, g_oTexcoord + vec2(   0.,     py)).rgb, 0.0, 1.0);
-    vec3 c12 = clamp(texture(g_Texture, g_oTexcoord + vec2(   0.,  2.*py)).rgb, 0.0, 1.0);
-    vec3 c13 = clamp(texture(g_Texture, g_oTexcoord + vec2(   0.,  3.*py)).rgb, 0.0, 1.0);
-    vec3 c23 = clamp(texture(g_Texture, g_oTexcoord + vec2(   px, -2.*py)).rgb, 0.0, 1.0);
-    vec3 c3  = clamp(texture(g_Texture, g_oTexcoord + vec2(   px,    -py)).rgb, 0.0, 1.0);
-    vec3 c5  = clamp(texture(g_Texture, g_oTexcoord + vec2(   px,     0.)).rgb, 0.0, 1.0);
-    vec3 c8  = clamp(texture(g_Texture, g_oTexcoord + vec2(   px,     py)).rgb, 0.0, 1.0);
-    vec3 c14 = clamp(texture(g_Texture, g_oTexcoord + vec2(   px,  2.*py)).rgb, 0.0, 1.0);
-    vec3 c18 = clamp(texture(g_Texture, g_oTexcoord + vec2( 2.*px,   -py)).rgb, 0.0, 1.0);
-    vec3 c11 = clamp(texture(g_Texture, g_oTexcoord + vec2( 2.*px,    0.)).rgb, 0.0, 1.0);
-    vec3 c17 = clamp(texture(g_Texture, g_oTexcoord + vec2( 2.*px,    py)).rgb, 0.0, 1.0);
-    vec3 c16 = clamp(texture(g_Texture, g_oTexcoord + vec2( 3.*px,    0.)).rgb, 0.0, 1.0 );
+    vec3 c7  = clamp(texture(g_Texture, g_TexCoord + vec2(   0.,     py)).rgb, 0.0, 1.0);
+    vec3 c12 = clamp(texture(g_Texture, g_TexCoord + vec2(   0.,  2.*py)).rgb, 0.0, 1.0);
+    vec3 c13 = clamp(texture(g_Texture, g_TexCoord + vec2(   0.,  3.*py)).rgb, 0.0, 1.0);
+    vec3 c23 = clamp(texture(g_Texture, g_TexCoord + vec2(   px, -2.*py)).rgb, 0.0, 1.0);
+    vec3 c3  = clamp(texture(g_Texture, g_TexCoord + vec2(   px,    -py)).rgb, 0.0, 1.0);
+    vec3 c5  = clamp(texture(g_Texture, g_TexCoord + vec2(   px,     0.)).rgb, 0.0, 1.0);
+    vec3 c8  = clamp(texture(g_Texture, g_TexCoord + vec2(   px,     py)).rgb, 0.0, 1.0);
+    vec3 c14 = clamp(texture(g_Texture, g_TexCoord + vec2(   px,  2.*py)).rgb, 0.0, 1.0);
+    vec3 c18 = clamp(texture(g_Texture, g_TexCoord + vec2( 2.*px,   -py)).rgb, 0.0, 1.0);
+    vec3 c11 = clamp(texture(g_Texture, g_TexCoord + vec2( 2.*px,    0.)).rgb, 0.0, 1.0);
+    vec3 c17 = clamp(texture(g_Texture, g_TexCoord + vec2( 2.*px,    py)).rgb, 0.0, 1.0);
+    vec3 c16 = clamp(texture(g_Texture, g_TexCoord + vec2( 3.*px,    0.)).rgb, 0.0, 1.0 );
     float e[13] = float[] (
         AF_dxdy(c0),  AF_dxdy(c1),  AF_dxdy(c2),  AF_dxdy(c3),  AF_dxdy(c4),
         AF_dxdy(c5),  AF_dxdy(c6),  AF_dxdy(c7),  AF_dxdy(c8),  AF_dxdy(c9),

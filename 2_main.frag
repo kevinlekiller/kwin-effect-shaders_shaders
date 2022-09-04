@@ -29,11 +29,12 @@ uniform float g_Random;
 // AKA TEX0 or vTexCoord in libretro
 // AKA TexCoord in Reshade
 // The coordinates of the current texture.
-in vec2 g_oTexcoord;
+in vec2 g_TexCoord;
 // This is the final color of the pixel.
 out vec4 g_FragColor;
 // Initially set to the current pixel color, at the end of the program g_FragColor is set to this.
 vec4 g_Color;
+// Set to vec4(g_TextureSize, 1.0 / g_TextureSize);
 vec4 g_SourceSize;
 // Screen width x Screen height
 uniform vec2 g_TextureSize;
@@ -120,7 +121,7 @@ void shader_vignette();
 #endif
 
 void main() {
-    g_Color = texture(g_Texture, g_oTexcoord).rgba;
+    g_Color = texture(g_Texture, g_TexCoord).rgba;
     g_SourceSize = vec4(g_TextureSize, 1.0 / g_TextureSize);
     g_PixelSize = vec2(1.0 / g_TextureSize);
 

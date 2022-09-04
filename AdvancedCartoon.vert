@@ -21,14 +21,14 @@ void shader_advanced_cartoon() {
    vec2 dg2 = vec2(-x, y);
    vec2 dx  = vec2(x, 0.0);
    vec2 dy  = vec2(0.0, y);
-   AC_Coord_0.xy = g_oTexcoord.xy;
-   AC_Coord_1.xy = g_oTexcoord.xy - dy;
-   AC_Coord_2.xy = g_oTexcoord.xy + dy;
-   AC_Coord_3.xy = g_oTexcoord.xy - dx;
-   AC_Coord_4.xy = g_oTexcoord.xy + dx;
-   AC_Coord_5.xy = g_oTexcoord.xy - dg1;
-   AC_Coord_6.xy = g_oTexcoord.xy + dg1;
-   AC_Coord_7.xy = g_oTexcoord.xy - dg2;
-   AC_Coord_8.xy = g_oTexcoord.xy + dg2;
+   AC_Coord_0.xy = g_TexCoord.xy;
+   AC_Coord_1.xy = g_TexCoord.xy - dy;
+   AC_Coord_2.xy = g_TexCoord.xy + dy;
+   AC_Coord_3.xy = g_TexCoord.xy - dx;
+   AC_Coord_4.xy = g_TexCoord.xy + dx;
+   AC_Coord_5.xy = g_TexCoord.xy - dg1;
+   AC_Coord_6.xy = g_TexCoord.xy + dg1;
+   AC_Coord_7.xy = g_TexCoord.xy - dg2;
+   AC_Coord_8.xy = g_TexCoord.xy + dg2;
 }
 #endif

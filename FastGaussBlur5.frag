@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 void shader_fast_gaussian_blurV() {
     vec2 blurOffset = (vec2(1.3333333333333333) * vec2(FGBV_HORIZONTAL_STRENGTH, FGBV_VERTICAL_STRENGTH)) / g_TextureSize;
     g_Color *= 0.29411764705882354;
-    g_Color += texture(g_Texture, g_oTexcoord + blurOffset) * 0.35294117647058826;
-    g_Color += texture(g_Texture, g_oTexcoord - blurOffset) * 0.35294117647058826;
+    g_Color += texture(g_Texture, g_TexCoord + blurOffset) * 0.35294117647058826;
+    g_Color += texture(g_Texture, g_TexCoord - blurOffset) * 0.35294117647058826;
 }
 #endif

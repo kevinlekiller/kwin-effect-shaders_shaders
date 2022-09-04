@@ -33,8 +33,8 @@
 
 void shader_chromatic_aberration() {
     vec3 color = g_Color.rgb;
-    color.r = texture(g_Texture, g_oTexcoord + (g_PixelSize * CHROMATICABERRATION_SHIFT)).r;
-    color.b = texture(g_Texture, g_oTexcoord - (g_PixelSize * CHROMATICABERRATION_SHIFT)).b;
+    color.r = texture(g_Texture, g_TexCoord + (g_PixelSize * CHROMATICABERRATION_SHIFT)).r;
+    color.b = texture(g_Texture, g_TexCoord - (g_PixelSize * CHROMATICABERRATION_SHIFT)).b;
     g_Color.rgb = mix(g_Color.rgb, color, CHROMATICABERRATION_STRENGTH);
 }
 #endif // CHROMATICABERRATION_ENABLED

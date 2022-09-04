@@ -32,10 +32,10 @@
 void shader_cartoon() {
     vec3 coefLuma = vec3(0.2126, 0.7152, 0.0722);
 
-    float diff1 = dot(coefLuma, texture(g_Texture, g_oTexcoord + g_PixelSize).rgb);
-    diff1 = dot(vec4(coefLuma, -1.0), vec4(texture(g_Texture, g_oTexcoord - g_PixelSize).rgb, diff1));
-    float diff2 = dot(coefLuma, texture(g_Texture, g_oTexcoord + g_PixelSize * vec2(1.0, -1.0)).rgb);
-    diff2 = dot(vec4(coefLuma, -1.0), vec4(texture(g_Texture, g_oTexcoord + g_PixelSize * vec2(-1.0, 1.0)).rgb, diff2));
+    float diff1 = dot(coefLuma, texture(g_Texture, g_TexCoord + g_PixelSize).rgb);
+    diff1 = dot(vec4(coefLuma, -1.0), vec4(texture(g_Texture, g_TexCoord - g_PixelSize).rgb, diff1));
+    float diff2 = dot(coefLuma, texture(g_Texture, g_TexCoord + g_PixelSize * vec2(1.0, -1.0)).rgb);
+    diff2 = dot(vec4(coefLuma, -1.0), vec4(texture(g_Texture, g_TexCoord + g_PixelSize * vec2(-1.0, 1.0)).rgb, diff2));
 
     float edge = dot(vec2(diff1, diff2), vec2(diff1, diff2));
 
