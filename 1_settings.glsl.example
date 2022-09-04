@@ -522,9 +522,9 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 //----------------------------------------------------------------
 //---------------- Invert configuration section ------------------
 //----------------------------------------------------------------
-// Description: Invers the colors of the image.
+// Description: Inverts the colors of the image.
 // License: GPL v2
-// Source: https://github.com/kevinlekiller/kwin-effect-shaders_shaders
+// Source: https://github.com/kevinlekiller/kwin-effect-shaders_shaders/blob/main/Invert.frag
 
 // Set to 1 to enable.
 #define INVERT_ENABLED 0
