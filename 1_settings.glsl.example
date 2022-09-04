@@ -23,9 +23,10 @@
 #define SHADER_FAST_GAUSS_BLURV     20
 #define SHADER_VIGNETTE             21
 #define SHADER_FILM_NOISE           22
-#define SHADER_DALTONIZE            23
-#define SHADER_GRAYSCALE            24
-#define SHADERS                     25
+#define SHADER_INVERT               23
+#define SHADER_DALTONIZE            24
+#define SHADER_GRAYSCALE            25
+#define SHADERS                     26
 //----------------------------------------------------------------
 //----------------------------------------------------------------
 //------------------ Start of user configuration -----------------
@@ -63,6 +64,7 @@ const int SHADER_ORDER[SHADERS+1] = int[] ( // Don't change this line.
     SHADER_FAST_GAUSS_BLURV,
     SHADER_VIGNETTE,
     SHADER_FILM_NOISE,
+    SHADER_INVERT,
     SHADER_DALTONIZE,
     SHADER_GRAYSCALE,
 
@@ -515,6 +517,34 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 // 3 -> ITU-R BT.2100
 // Default: 0
 #define GRAYSCALE_METHOD 0
+
+#endif
+//----------------------------------------------------------------
+//---------------- Invert configuration section ------------------
+//----------------------------------------------------------------
+// Description: Invers the colors of the image.
+// License: GPL v2
+// Source: https://github.com/kevinlekiller/kwin-effect-shaders_shaders
+
+// Set to 1 to enable.
+#define INVERT_ENABLED 0
+#if INVERT_ENABLED == 1 // Don't change this line.
+
+// 0 -> Does not invert the red color.
+// 1 -> Invers the red color.
+#define INVERT_RED 1
+
+// 0 -> Does not invert the green color.
+// 1 -> Invers the green color.
+#define INVERT_GREEN 1
+
+// 0 -> Does not invert the blue color.
+// 1 -> Invers the blue color.
+#define INVERT_BLUE 1
+
+// 0 -> Does not invert the alpha.
+// 1 -> Invers the alpha.
+#define INVERT_ALPHA 0
 
 #endif
 //----------------------------------------------------------------

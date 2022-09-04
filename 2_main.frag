@@ -85,6 +85,9 @@ void shader_fast_gaussian_blurV();
 #if GRAYSCALE_ENABLED == 1
 void shader_grayscale();
 #endif
+#if INVERT_ENABLED == 1
+void shader_invert();
+#endif
 #if LEVELS_ENABLED == 1
 void shader_levels();
 #endif
@@ -195,6 +198,11 @@ void main() {
             #if GRAYSCALE_ENABLED == 1
             case SHADER_GRAYSCALE:
                 shader_grayscale();
+                break;
+            #endif
+            #if INVERT_ENABLED == 1
+            case SHADER_INVERT:
+                shader_invert();
                 break;
             #endif
             #if LEVELS_ENABLED == 1
