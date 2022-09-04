@@ -19,7 +19,7 @@
 
 in vec4 g_Position;
 in vec4 g_iTexcoord;
-out vec2 g_oTexcoord;
+out vec2 g_TexCoord;
 uniform sampler2D g_Texture;
 uniform mat4 modelViewProjectionMatrix;
 uniform float g_Random;
@@ -31,7 +31,7 @@ void shader_advanced_cartoon();
 #endif
 
 void main() {
-    g_oTexcoord = g_iTexcoord.st;
+    g_TexCoord = g_iTexcoord.st;
     gl_Position = modelViewProjectionMatrix * g_Position;
     g_SourceSize = vec4(g_TextureSize, 1.0 / g_TextureSize);
 

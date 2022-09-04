@@ -16,11 +16,12 @@
  *  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  */
 
-uniform vec3 grayScaleMethods[4] = vec3[] (
+uniform vec3 grayScaleMethods[5] = vec3[] (
     vec3(0.2100, 0.7200, 0.0700), // sRGB
-    vec3(0.2990, 0.5870, 0.1140), // YUV
+    vec3(0.2990, 0.5870, 0.1140), // CCIR 601
     vec3(0.2126, 0.7152, 0.0722), // ITU-R BT.709
-    vec3(0.2627, 0.6780, 0.0593)  // ITU-R BT.2100
+    vec3(0.2627, 0.6780, 0.0593), // ITU-R BT.2100
+    vec3(0.2120, 0.7010, 0.0870)  // SMPTE 240M
 );
 
 void shader_grayscale() {

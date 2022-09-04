@@ -511,10 +511,11 @@ uniform vec3 DPX_RGB_C = vec3(0.36, 0.36, 0.34);
 #if GRAYSCALE_ENABLED == 1 // Don't change this line.
 
 // Select the method to use to convert to Grayscale.
-// 0 -> sRGB
-// 1 -> YUV
-// 2 -> ITU-R BT.709
-// 3 -> ITU-R BT.2100
+// 0 -> sRGB           -> Computers
+// 1 -> CCIR 601       -> SDTV
+// 2 -> ITU-R BT.709   -> HDTV
+// 3 -> ITU-R BT.2100  -> HDTV HDR
+// 4 -> SMPTE 240M     -> HDTV 1035i
 // Default: 0
 #define GRAYSCALE_METHOD 0
 
